@@ -1,0 +1,30 @@
+Provides parsing of command-line flags and environment variables.
+If a flag and a matching environment variable is defined,
+the environment variable overrides the flag variable
+
+Also includes pass-through to flag package functions:
+Parse()
+Parsed()
+PrintDefaults()
+Usage()
+
+_______________________________________________________
+Usage example:
+
+import "envflag"
+
+var (   // The first name in each function call is the flagName,
+    	// the second name is the environment variable name.
+	// These two names can be different
+	flagB      = envflag.Bool("B", "B", boolValDefaultFlag, "Bool [BOOL]")
+	flagF64    = envflag.Float64("F64", "F64", f64ValDefaultFlag, "F64 [F64]")
+	flagInt    = envflag.Int("Int", "Int", intValDefaultFlag, "Int [INT]")
+	flagInt64  = envflag.Int64("Int64", "Int64", int64ValDefaultFlag, "Int64 [INT64]")
+	flagUint   = envflag.UInt("Uint", "Uint", uintValDefaultFlag, "Uint [UINT]")
+	flagUint64 = envflag.UInt64("Uint64", "Uint64", uint64ValDefaultFlag, "Uint64 [UINT64]")
+)
+
+envflag.Parse()
+// After the Parse() call, you can use the variables (ex. flagB) in your code.
+// The value retrieved for each variable is the environment variable value (if it exists).
+// If the environment variable does not exist, it is the flag value passed in on the command line
