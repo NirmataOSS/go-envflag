@@ -33,6 +33,9 @@ func Parse() {
 	goflag.Parse()
 }
 
+func Lookup(name string) *flag.Flag{
+	return flag.Lookup(name)
+}
 // Parsed returns true if FlagSet already parsed, false otherwise
 func Parsed() bool {
 
