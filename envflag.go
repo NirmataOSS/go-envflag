@@ -27,6 +27,7 @@ func Parse() {
 
 	flag.Parse()
 	pflag.Parse()
+	MergeFlags()
 }
 
 // Lookup returns a flag value, or nil if it does not exist
