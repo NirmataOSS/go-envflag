@@ -55,6 +55,11 @@ func Usage() {
 	pflag.Usage()
 }
 
+// VisitAll invokes pflag.VisitAll
+func VisitAll(fn func(*pflag.Flag)) {
+	pflag.VisitAll(fn)
+}
+
 func verifyNames(flagName, envName string) {
 	if flagName == "" && envName == "" {
 		panic("No flag or environment name given for " + envName)
