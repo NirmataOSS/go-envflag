@@ -2,10 +2,12 @@ package envflag
 
 import (
 	"flag"
+	"fmt"
 	"os"
 	"strconv"
 	"time"
 
+	envflag "github.com/NirmataOSS/go-envflag"
 	pflag "github.com/spf13/pflag"
 )
 
@@ -43,6 +45,15 @@ func Parsed() bool {
 // PrintDefaults prints default value for all elements
 func PrintDefaults() {
 	pflag.PrintDefaults()
+}
+
+// PrintValues prints current values for all flags
+func PrintValues() {
+	fmt.Println("Using values: ")
+	envflag.VisitAll(func(f *pflag.Flag) {
+		fmt.Printf("        %s = %s\n", f.Name, f.Value)
+	})
+	fmt.Println()
 }
 
 // Set sets the name/value pair in the flag set
